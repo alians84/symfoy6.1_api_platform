@@ -7,7 +7,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource]
+#[ApiResource(formats: ['jsonld' ])]
 class User
 {
     #[ORM\Id]
@@ -22,7 +22,7 @@ class User
     private ?string $phone = null;
 
     #[ORM\Column]
-    private ?int $basketÑ = null;
+    private ?int $basket = null;
 
     public function getId(): ?int
     {
@@ -53,15 +53,8 @@ class User
         return $this;
     }
 
-    public function getBasketÑ(): ?int
+    public function getBasket(): ?int
     {
-        return $this->basketÑ;
-    }
-
-    public function setBasketÑ(int $basketÑ): self
-    {
-        $this->basketÑ = $basketÑ;
-
-        return $this;
+        return $this->basket;
     }
 }
